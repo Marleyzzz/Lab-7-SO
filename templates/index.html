@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesare Text</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Procesare Text</h1>
+        <form method="POST" action="/process">
+            <label for="text">Introduceți un text:</label>
+            <input type="text" id="text" name="text" required>
+            <button type="submit">Procesează</button>
+        </form>
+
+        {% if original and processed %}
+        <div class="results">
+            <h2>Rezultate:</h2>
+            <p><strong>Text original:</strong> {{ original }}</p>
+            <p><strong>Text procesat:</strong> {{ processed }}</p>
+        </div>
+        {% endif %}
+
+        {% if last %}
+        <div class="results">
+            <h2>Ultimul text procesat:</h2>
+            <p>{{ last }}</p>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
